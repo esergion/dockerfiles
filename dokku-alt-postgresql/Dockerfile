@@ -1,6 +1,11 @@
 FROM	ubuntu:12.04
 MAINTAINER	Sergey Pyankov "esergion@gmail.com"
 
+RUN locale-gen ru_RU.UTF-8 
+ENV LANG ru_RU.UTF-8
+ENV LANGUAGE ru_RU:ru
+ENV LC_ALL ru_RU.UTF-8
+
 RUN LC_ALL=ru_RU.UTF-8 DEBIAN_FRONTEND=noninteractive \
 	echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d && \
 	chmod +x /usr/sbin/policy-rc.d && \
