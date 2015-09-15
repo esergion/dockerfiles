@@ -1,13 +1,11 @@
 FROM	ubuntu:12.04
 MAINTAINER	Sergey Pyankov "esergion@gmail.com"
 
-RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive \
+RUN LC_ALL=ru_RU.UTF-8 DEBIAN_FRONTEND=noninteractive \
 	echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d && \
 	chmod +x /usr/sbin/policy-rc.d && \
 	apt-get update && \
 	apt-get install -y -q postgresql-9.1 postgresql-contrib-9.1 && \
-	pg_dropcluster --stop 9.1 main && \
-	pg_createcluster --locale ru_RU.UTF-8 9.1 main && \
 	rm -rf /var/lib/apt/lists/* && \
 	apt-get clean && \
 	rm /usr/sbin/policy-rc.d && \
