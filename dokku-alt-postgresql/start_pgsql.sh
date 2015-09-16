@@ -9,7 +9,7 @@ fi
 if [[ ! -f /opt/postgresql/initialized ]]; then
     mkdir -p /opt/postgresql
     pg_dropcluster --stop 9.1 main
-    pg_createcluster --locale ru_RU.UTF-8 9.1. main
+    pg_createcluster --locale ru_RU.UTF-8 9.1 main
     cp -a /var/lib/postgresql/* /opt/postgresql/
     chown -R postgres:postgres /opt/postgresql
     DB_PASSWORD="$(cat "/opt/postgresql_password")"
