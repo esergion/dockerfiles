@@ -17,7 +17,8 @@ RUN LC_ALL=ru_RU.UTF-8 LC_COLLATE=ru_RU.UTF-8 DEBIAN_FRONTEND=noninteractive \
 	rm /usr/sbin/policy-rc.d && \
 	echo 'host all all 0.0.0.0/0 md5' >> /etc/postgresql/9.1/main/pg_hba.conf && \
 	sed -i -e"s/var\/lib/opt/g" /etc/postgresql/9.1/main/postgresql.conf
-
+RUN	pg_dropcluster --stop 9.1 main
+RUN    	pg_createcluster --locale ru_RU.UTF-8 9.1. main
 ADD	. /usr/bin
 RUN	chmod +x /usr/bin/start_pgsql.sh
 
